@@ -1,0 +1,24 @@
+
+.al_01{
+    height:680px;
+}
+
+.lg_img{
+    width:100%;
+}
+
+.al_card {
+    width: 80%;
+}
+
+.lg_ue_01 .p-inputtext:enabled:focus{
+    box-shadow:none;
+}
+
+.lg_pw_01 .p-inputtext:enabled:focus{
+    box-shadow:none;
+}
+
+.lg_btn_id02 .p-button:focus{
+    box-shadow:none;
+}

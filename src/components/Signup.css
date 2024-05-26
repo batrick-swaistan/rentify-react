@@ -1,0 +1,46 @@
+.su_img{
+    width:100%;
+}
+
+.su_card {
+    width: 80%;
+}
+
+
+
+.su_email_inp{
+    width: 100%;
+}
+
+
+/* 
+.su_email_inp_02{
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-right: none;
+} */
+
+/* .su_email_btn_02{
+
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-left: none;
+
+} */
+
+
+.su_inp_main .p-inputtext:enabled:focus{
+    box-shadow:none;
+}
+
+.su_email_btn .p-button:focus{
+    box-shadow:none;
+}
+
+.su_verify_btn_02 .p-button:focus{
+    box-shadow:none;
+}
+
+.signup-dialog.p-dialog .p-dialog-content{
+    padding: 0px;
+}
