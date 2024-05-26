@@ -23,7 +23,7 @@ const Dashboard = () => {
   useEffect(() => {
     console.log(bearerToken);
     axios
-      .get("http://localhost:8080/rentify/api/buyer/allProperties")
+      .get("https://rentify-api-rentify-api.onrender.com/rentify/api/buyer/allProperties")
       .then((res) => {
         console.log(res.data);
         setProducts(res.data);
@@ -50,7 +50,7 @@ const Dashboard = () => {
     if (bearerToken) {
       await axios
         .get(
-          `http://localhost:8080/rentify/api/buyer/viewSellerDetails/${product.id}`,
+          `https://rentify-api-rentify-api.onrender.com/rentify/api/buyer/viewSellerDetails/${product.id}`,
           config
         )
         .then((res) => {
@@ -70,7 +70,7 @@ const Dashboard = () => {
     if (bearerToken) {
       await axios
         .post(
-          `http://localhost:8080/rentify/api/buyer/like/${product.id}`,
+          `https://rentify-api-rentify-api.onrender.com/rentify/api/buyer/like/${product.id}`,
           {},
           config
         )

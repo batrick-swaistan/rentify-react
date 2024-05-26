@@ -119,7 +119,7 @@ const SellerDashboard = () => {
     event.preventDefault();
     const auth_token = localStorage.getItem("access_token");
     axios
-      .post("http://localhost:8080/rentify/api/seller/addproperty", formData, {
+      .post("https://rentify-api-rentify-api.onrender.com/rentify/api/seller/addproperty", formData, {
         headers: { Authorization: `Bearer ${auth_token}` },
       })
       .then((res) => {
@@ -147,7 +147,7 @@ const SellerDashboard = () => {
 
     axios
       .get(
-        `http://localhost:8080/rentify/api/seller/sellerdetails?email=${user_email}`,
+        `https://rentify-api-rentify-api.onrender.com/rentify/api/seller/sellerdetails?email=${user_email}`,
         {
           headers: {
             Authorization: `Bearer ${auth_token}`,
@@ -160,7 +160,7 @@ const SellerDashboard = () => {
         // Fetch property details only after seller details are fetched
         axios
           .get(
-            `http://localhost:8080/rentify/api/seller/propertybyseller/${res.data.id}`,
+            `https://rentify-api-rentify-api.onrender.com/rentify/api/seller/propertybyseller/${res.data.id}`,
             {
               headers: {
                 Authorization: `Bearer ${auth_token}`,
@@ -186,7 +186,7 @@ const SellerDashboard = () => {
   const handleEdit = async (id) => {
     const auth_token = localStorage.getItem("access_token");
     await axios
-      .get(`http://localhost:8080/rentify/api/seller/property/${id}`, {
+      .get(`https://rentify-api-rentify-api.onrender.com/rentify/api/seller/property/${id}`, {
         headers: {
           Authorization: `Bearer ${auth_token}`,
         },
@@ -223,7 +223,7 @@ const SellerDashboard = () => {
     const auth_token = localStorage.getItem("access_token");
     await axios
       .put(
-        `http://localhost:8080/rentify/api/seller/editproperty/${currentProductId}`,
+        `https://rentify-api-rentify-api.onrender.com/rentify/api/seller/editproperty/${currentProductId}`,
         updatedFormData,
         {
           headers: {
@@ -251,7 +251,7 @@ const SellerDashboard = () => {
     const auth_token = localStorage.getItem("access_token");
     await axios
       .delete(
-        `http://localhost:8080/rentify/api/seller/deleteProperty/${property_id}`,
+        `https://rentify-api-rentify-api.onrender.com/rentify/api/seller/deleteProperty/${property_id}`,
         {
           headers: {
             Authorization: `Bearer ${auth_token}`,

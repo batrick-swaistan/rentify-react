@@ -52,7 +52,7 @@ const Login = () => {
     event.preventDefault();
     if (validate()) {
       await axios
-        .post("http://localhost:8080/rentify/v1/auth/authenticate", userDetails)
+        .post("https://rentify-api-rentify-api.onrender.com/rentify/v1/auth/authenticate", userDetails)
         .then((res) => {
           alert("User Logged in Successfully");
           console.log(res.data)

@@ -74,7 +74,7 @@ const Signup = () => {
       const { confirmPassword, ...payload } = user;
 
       await axios
-        .post("http://localhost:8080/rentify/v1/auth/register", payload)
+        .post("https://rentify-api-rentify-api.onrender.com/rentify/v1/auth/register", payload)
 
         .then((res) => {
           alert("User Logged in Successfully");
