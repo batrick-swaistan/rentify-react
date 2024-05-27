@@ -11,6 +11,7 @@ import { InputNumber } from "primereact/inputnumber";
 import { Calendar } from "primereact/calendar";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
+import { Skeleton } from "primereact/skeleton";
 
 const SellerDashboard = () => {
   const inital_state = [
@@ -35,6 +36,8 @@ const SellerDashboard = () => {
   const [currentProductId, setCurrentProductId] = useState(null);
   const [edituploaddisable, setEditUploadDisable] = useState(false);
   //   const [updatedProducts, setupdatedProducts] = useState([]);
+  const [detailsLoading,setDetailsLoading]=useState(false);
+  const [loading,setLoading]=useState(false);
 
   const [editVisible, setEditVisible] = useState(false);
   const Navigate = useNavigate();
@@ -145,6 +148,8 @@ const SellerDashboard = () => {
     const user_email = token_details.sub;
     console.log(user_email);
 
+    setDetailsLoading(true);
+
     axios
       .get(
         `https://rentify-api-rentify-api.onrender.com/rentify/api/seller/sellerdetails?email=${user_email}`,
@@ -156,8 +161,6 @@ const SellerDashboard = () => {
       )
       .then((res) => {
         setSellerDetails(res.data);
-
-        // Fetch property details only after seller details are fetched
         axios
           .get(
             `https://rentify-api-rentify-api.onrender.com/rentify/api/seller/propertybyseller/${res.data.id}`,
@@ -168,7 +171,11 @@ const SellerDashboard = () => {
             }
           )
           .then((res) => {
-            setProducts(res.data);
+            
+            setDetailsLoading(false);
+            setTimeout(()=>{
+              setProducts(res.data);
+            },5000)
           })
           .catch((err) => {
             console.log("Error fetching property details: ", err);
@@ -281,7 +288,8 @@ const SellerDashboard = () => {
 
   const itemTemplate = (product, index) => {
     return (
-      <div className="col-12 sm:col-6 lg:col-12 xl:col-4 p-2" key={product.id}>
+      <>
+      {!detailsLoading ? ( <div className="col-12 sm:col-6 lg:col-12 xl:col-4 p-2" key={product.id}>
         <div className="flex flex-column p-4 border-1 surface-border surface-card border-round">
           <div className="flex-1 flex flex-column">
             <div className="flex flex-wrap align-items-center justify-content-between gap-2">
@@ -452,7 +460,26 @@ const SellerDashboard = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div>):(<div className="col-12 sm:col-6 lg:col-12 xl:col-4 p-2" key={product.id}>
+                <div className="p-4 border-1 surface-border surface-card border-round">
+                    <div className="flex flex-wrap align-items-center justify-content-between gap-2">
+                        <Skeleton className="w-6rem border-round h-1rem" />
+                        <Skeleton className="w-3rem border-round h-1rem" />
+                    </div>
+                    <div className="flex flex-column align-items-center gap-3 py-5">
+                        <Skeleton className="w-9 shadow-2 border-round h-10rem" />
+                        <Skeleton className="w-8rem border-round h-2rem" />
+                        <Skeleton className="w-6rem border-round h-1rem" />
+                    </div>
+                    <div className="flex align-items-center justify-content-between">
+                        <Skeleton className="w-4rem border-round h-2rem" />
+                        <Skeleton shape="circle" className="w-3rem h-3rem" />
+                    </div>
+                </div>
+            </div>)}
+      </>
+      
+     
     );
   };
 

@@ -68,7 +68,12 @@ const Login = () => {
           }else{
             navigate("/SellerDashboard")
           }
-        });
+        })
+        .catch((err)=>{
+          console.log("Error:",err);
+          alert("Email and Password are wrong")
+        })
+        
     }
   };
 
