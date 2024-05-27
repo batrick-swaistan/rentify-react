@@ -7,7 +7,7 @@ Rentify is an application where sellers and buyers can meet to facilitate rental
 - **Frontend**: React.js, PrimeReact, PrimeFlex
 - **Backend**: Spring Framework, PostgreSQL
 - **Hosting**:
-  - Frontend: Vercel
+  - Frontend: Vercel(https://rentify-react-ten.vercel.app/)
   - Backend: Render (including PostgreSQL)
 
 ## Note
